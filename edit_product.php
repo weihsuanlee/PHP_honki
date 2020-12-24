@@ -20,6 +20,8 @@ $categories = $pdo->query($c_sql)->fetchAll();
 $pageName = 'edit_product';
 $title = '修改商品';
 
+$discount_display = (strlen($row['discount']) == 3) ? $row['discount'] * 10 : $row['discount'] * 100;
+
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/navbar.php' ?>
@@ -101,7 +103,7 @@ $title = '修改商品';
                             <div class="input-group-prepend">
                                 <span class="input-group-text">折扣</span>
                             </div>
-                            <input type="text" class="form-control" name="discount" value="<?= $row['discount'] ?>">
+                            <input type="text" class="form-control" name="discount" value="<?= $discount_display ?>">
                             <div class="input-group-append">
                                 <span class="input-group-text">折</span>
                             </div>

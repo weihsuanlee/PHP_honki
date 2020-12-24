@@ -86,7 +86,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
                             <div class="input-group-prepend">
                                 <span class="input-group-text">折扣</span>
                             </div>
-                            <input type="text" class="form-control" name="discount" id="discount">
+                            <input type="text" class="form-control" name="discount" id="discount" value="0">
                             <div class="input-group-append">
                                 <span class="input-group-text">折</span>
                             </div>
