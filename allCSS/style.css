@@ -169,6 +169,8 @@ a:hover {
 .book-pic img {
   height: 165px;
   object-fit: contain;
+  -webkit-filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.2));
 }
 
 .icons {
@@ -273,15 +275,23 @@ a:hover {
   margin-left: -15%;
 }
 .product-picture {
-  width: 272px;
+  width: 280px;
   margin-top: 160px;
   position: absolute;
 }
-
+.product-picture img {
+  transition: all 0.5s;
+  height: 100%;
+  -webkit-filter: drop-shadow(20px 20px 20px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(20px 20px 20px rgba(0, 0, 0, 0.2));
+}
+.product-picture img:hover {
+  transform: translateY(-1rem);
+}
 .tags {
   position: absolute;
-  top: 176px;
-  left: 264px;
+  top: 184px;
+  left: 272px;
 }
 .tag {
   padding: 2rem;

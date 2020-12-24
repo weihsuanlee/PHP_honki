@@ -51,6 +51,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
                                 <label class="input-group-text" for="category_sid">類別</label>
                             </div>
                             <select name="category_sid" class="custom-select" id="category_sid">
+                                <option>請選擇...</option>
                                 <?php foreach ($categories as $c) : ?>
                                     <option value="<?= $c['sid'] ?>"><?= $c['name'] ?></option>
                                 <?php endforeach; ?>
@@ -198,7 +199,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
         if (discount.value.length == 2) {
             d = discount.value / 100;
         }
-        if (discount.value.length == 0) {
+        if (discount.value == 0) {
             d = 1;
         }
         final_price.value = Math.round(price.value * d);
@@ -215,6 +216,9 @@ $categories = $pdo->query($c_sql)->fetchAll();
         }
         final_price.value = Math.round(price.value * d);
     })
+    category_sid.addEventListener('click', function() {
+        category_sid.style.background = 'white';
+    })
 
     function checkForm() {
         let isPass = true;
@@ -222,6 +226,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
         isbn.style.backgroundColor = 'white';
         price.style.backgroundColor = 'white';
         stock_num.style.backgroundColor = 'white';
+        category_sid.style.background = 'white';
         info.innerHTML = '';
         message.style.display = 'none';
 
@@ -229,6 +234,12 @@ $categories = $pdo->query($c_sql)->fetchAll();
             isPass = false;
             title.style.backgroundColor = 'var(--yellow)';
             info.innerHTML += "請輸入書名 <br>";
+            message.style.display = 'block';
+        }
+        if (category_sid.value == '請選擇...') {
+            isPass = false;
+            category_sid.style.background = 'var(--yellow)';
+            info.innerHTML += "請選擇類別 <br>";
             message.style.display = 'block';
         }
         if (price.value.length == 0) {
