@@ -1,4 +1,4 @@
-<div class="container-fluid bg-green text-center pt-5 pb-5">
+<footer class="container-fluid bg-green text-center pt-5 pb-5">
     <div class="row flex-column">
         <div class="col">
             <a class="footer-brand" href="<?= WEB_ROOT ?>index_.php">
@@ -36,4 +36,4 @@
             <a href="#">合作洽談</a>
         </div>
     </div>
-</div>
+    </ㄕ>
