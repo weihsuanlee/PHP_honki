@@ -30,6 +30,11 @@ a:hover {
   text-decoration: none;
   color: inherit;
 }
+.btn:focus,
+.btn.focus {
+  box-shadow: none;
+}
+
 /* navbar */
 .navbar {
   padding: 0;

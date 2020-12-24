@@ -21,6 +21,12 @@ if (!empty($search)) {
     $where .= sprintf(" AND (`title` LIKE %s OR `title_eng` LIKE %s OR `publication` LIKE %s OR `author` LIKE %s) ", $keyword, $keyword, $keyword, $keyword);
     $params['search'] = $search;
 }
+// 排序
+$pub_year = isset($_GET['pub_year']) ? $_GET['pub_year'] : '';
+if (!empty($pub_year)) {
+    $where .= ($pub_year == 'ASC') ? " ORDER BY `pub_year` ASC " : " ORDER BY `pub_year` DESC ";
+    $params['pub_year'] = $pub_year;
+}
 
 
 $t_sql = "SELECT COUNT(*) FROM products $where ";
@@ -73,7 +79,10 @@ $categories = $pdo->query($c_sql)->fetchAll();
         </div>
         <div class="col-9 mr-auto">
             <div class="row justify-content-end">
-
+                <div class="col-2 mb-3">
+                    <a href="?<?php $params['pub_year'] = ($pub_year == 'DESC') ? 'ASC' : 'DESC';
+                                echo http_build_query($params); ?>">出版日期</a>
+                </div>
                 <form class="form-inline mb-3 mr-4 search-bar">
                     <input class="form-control" type="search" name="search" value="<?= htmlentities($search) ?>">
                     <button class="btn" type="submit"><i class="fas fa-search mx-2"></i></button>
@@ -161,7 +170,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
                                 ?>
                                     <li class="page-item <?= $i === $page ? 'active' : '' ?>">
                                         <a href="?<?php $params['page'] = $i;
-                                                    echo  http_build_query($params) ?>" class="page-link"><?= $i ?></a>
+                                                    echo  http_build_query($params['page']) ?>" class="page-link"><?= $i ?></a>
                                     </li>
                                 <?php endfor; ?>
                                 <li class="page-item <?= $page == $totalPages ? 'd-none' : '' ?>">
