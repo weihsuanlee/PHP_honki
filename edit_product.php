@@ -206,6 +206,32 @@ $title = '修改商品';
     const stock_num = document.querySelector('#stock_num');
 
     const final_price = document.querySelector('#final_price');
+    const discount = document.querySelector('#discount');
+
+    price.addEventListener('change', function() {
+        if (discount.value.length == 1) {
+            d = discount.value / 10;
+        }
+        if (discount.value.length == 2) {
+            d = discount.value / 100;
+        }
+        if (discount.value == 0) {
+            d = 1;
+        }
+        final_price.value = Math.round(price.value * d);
+    })
+    discount.addEventListener('change', function() {
+        if (discount.value.length == 1) {
+            d = discount.value / 10;
+        }
+        if (discount.value.length == 2) {
+            d = discount.value / 100;
+        }
+        if (discount.value == 0) {
+            d = 1;
+        }
+        final_price.value = Math.round(price.value * d);
+    })
 
     function checkForm() {
         let isPass = true;
@@ -228,6 +254,12 @@ $title = '修改商品';
             info.innerHTML += "請輸入定價 <br>";
             message.style.display = 'block';
         }
+        if (discount.value.length == 0 || discount.value.length > 2) {
+            isPass = false;
+            discount.style.backgroundColor = 'var(--yellow)';
+            info.innerHTML += "請輸入符合格式折扣數(原價請輸入0)<br>";
+            message.style.display = 'block';
+        }
         if (stock_num.value.length == 0) {
             isPass = false;
             stock_num.style.backgroundColor = 'var(--yellow)';
@@ -240,6 +272,7 @@ $title = '修改商品';
             info.innerHTML += "請輸入ISBN (或ISSN) <br>";
             message.style.display = 'block';
         }
+
         location.href = "#";
         if (isPass) {
             const fd = new FormData(document.form1);

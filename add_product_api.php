@@ -30,6 +30,9 @@ if (!empty($_FILES) and !empty($_FILES['book_pics']['type']) and $ext_map[$_FILE
     move_uploaded_file($_FILES['book_pics']['tmp_name'], $upload_folder . '/' . $filename);
 }
 
+$discount_db = strlen($_POST['discount']) == 1 ? $_POST['discount'] / 10 : $_POST['discount'] / 100;
+
+
 $sql = "INSERT INTO `products` ( `book_pics`, `title`, `title_eng`, `author`, `publication`, `pub_year`, `ISBN`, `price`, `discount`, `final_price`, `category_sid`, `language`, `author_intro`, `book_overview`, `list`, `stock_num`, `remark`,`created_at`) 
 VALUES (
     ?, ?, ?, ?, ?, ?, ?, ?, ?,
@@ -47,7 +50,7 @@ $stmt->execute([
     $_POST['pub_year'],
     $_POST['isbn'],
     $_POST['price'],
-    $_POST['discount'],
+    $discount_db,
     $_POST['final_price'],
     $_POST['category_sid'],
     $_POST['language'],

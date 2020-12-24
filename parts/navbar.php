@@ -21,7 +21,7 @@ if (!isset($pageName)) $pageName = '';
             </a>
         </div>
     </div>
-    <div class="collapse navbar-collapse" id="menu"> 
+    <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav mr-auto">
             <li>
                 <a class="nav-page" href="<?= WEB_ROOT ?>product_list.php">商品列表</a>
@@ -29,8 +29,8 @@ if (!isset($pageName)) $pageName = '';
             <li>
                 <a class="nav-page" href="<?= WEB_ROOT ?>add_product.php">新增商品</a>
             </li>
-        </ul> 
+        </ul>
     </div>
-    
+
 
 </nav>

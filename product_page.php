@@ -15,12 +15,13 @@ if (empty($row)) {
 }
 $pageName = 'product_page';
 $title = '商品內頁';
+$discount_display = (strlen($row['discount']) == 3) ? $row['discount'] * 10 : $row['discount'] * 100;
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/navbar.php' ?>
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-10 col-md-12 col-lg-6 book-main-bg">
+        <div class="col-10 col-md-12 col-lg-7 offset-lg-1 book-main-bg">
             <i class="bookmark fas fa-bookmark"></i>
             <div class="book-title">
                 <h3 class="book-name"><?= $row['title'] ?></h3>
@@ -47,7 +48,7 @@ $title = '商品內頁';
                     </a>
                 </div>
                 <div class="tag price-tag">
-                    <span class="badge badge-pill discount"><?= $row['discount'] ?>折</span>
+                    <span class="badge badge-pill discount"><?= $discount_display == 0 ? '定價' : $discount_display . '折' ?></span>
                     <h4 class="real-price">NT $<?= $row['final_price'] ?></h4>
                 </div>
             </div>
@@ -68,34 +69,34 @@ $title = '商品內頁';
     </div>
     <div class="row justify-content-center">
         <div class="col-10 col-md-10 col-lg-10">
-                <div class="row book-nav">
-                    <a class="col-4 book-nav-button active" href="#overview">
-                        <h5>內容簡介</h5>
-                    </a>
-                    <a class="col-4 book-nav-button" href="#introduction">
-                        <h5>作者介紹</h5>
-                    </a>
-                    <a class="col-4 book-nav-button" href="#list">
-                        <h5>書籍目錄</h5>
-                    </a>
+            <div class="row book-nav">
+                <a class="col-4 book-nav-button active" href="#overview">
+                    <h5>內容簡介</h5>
+                </a>
+                <a class="col-4 book-nav-button" href="#introduction">
+                    <h5>作者介紹</h5>
+                </a>
+                <a class="col-4 book-nav-button" href="#list">
+                    <h5>書籍目錄</h5>
+                </a>
+            </div>
+            <div class="row justify-content-center book-details-bg">
+                <div class="col-11 mb-5 mt-2" id="overview">
+                    <h5>內容簡介</h5>
+                    <hr>
+                    <p><?= nl2br($row['book_overview']) ?></p>
                 </div>
-                <div class="row justify-content-center book-details-bg">
-                    <div class="col-11 mb-5 mt-2" id="overview">
-                        <h5>內容簡介</h5>
-                        <hr>
-                        <p><?= nl2br($row['book_overview']) ?></p>
-                    </div>
-                    <div class="col-11 mb-5 mt-3" id="introduction">
-                        <h5>作者介紹</h5> 
-                        <hr>
-                        <p><?= nl2br($row['author_intro']) ?></p>
-                    </div>
-                    <div class="col-11 mb-5 mt-3" id="list">
-                        <h5>書籍目錄</h5>
-                        <hr>
-                        <p><?= nl2br($row['list']) ?></p>
-                    </div>
+                <div class="col-11 mb-5 mt-3" id="introduction">
+                    <h5>作者介紹</h5>
+                    <hr>
+                    <p><?= nl2br($row['author_intro']) ?></p>
                 </div>
+                <div class="col-11 mb-5 mt-3" id="list">
+                    <h5>書籍目錄</h5>
+                    <hr>
+                    <p><?= nl2br($row['list']) ?></p>
+                </div>
+            </div>
 
         </div>
     </div>

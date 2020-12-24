@@ -55,21 +55,13 @@ $categories = $pdo->query($c_sql)->fetchAll();
             <!-- 分類選單 -->
             <div class="btn-group-vertical w-100 mr-auto mb-5">
                 <a type="button" href="?" class="btn btn-dark">所有商品</a>
-                <?php if (!empty($params['search'])) { ?>
-                    <?php foreach ($categories as $c) : ?>
-                        <a type="button" href="?<?php $params['category_sid'] = $c['sid'];
-                                                echo http_build_query($params); ?>" class="btn sidebar-btn <?= $category_sid == $c['sid'] ? 'sidebar-btn-active' : '' ?>">
-                            <?= $c['name'] ?>
-                        </a>
-                    <?php endforeach;
-                    unset($params['category_sid']); ?>
-                    <?php } else {
-                    foreach ($categories as $c) : ?>
-                        <a type="button" href="?category_sid=<?= $c['sid'] ?>" class="btn sidebar-btn <?= $category_sid == $c['sid'] ? 'sidebar-btn-active' : '' ?>">
-                            <?= $c['name'] ?>
-                        </a>
-                    <?php endforeach; ?>
-                <?php }; ?>
+                <?php foreach ($categories as $c) : ?>
+                    <a type="button" href="?<?php $params['category_sid'] = $c['sid'];
+                                            echo http_build_query($params); ?>" class="btn sidebar-btn <?= $category_sid == $c['sid'] ? 'sidebar-btn-active' : '' ?>">
+                        <?= $c['name'] ?>
+                    </a>
+                <?php endforeach;
+                unset($params['category_sid']); ?>
             </div>
         </div>
         <div class="col-9 mr-auto">

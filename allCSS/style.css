@@ -73,7 +73,7 @@ a:hover {
 .nav-cart {
   background-color: var(--gold);
 }
-
+/* product list */
 /* sidebar */
 .btn {
   background-color: var(--white);
@@ -91,9 +91,13 @@ a:hover {
   color: var(--black);
 }
 .sidebar-btn-active {
-  color: var(--black);
+  color: var(--white);
   background-color: var(--gold);
   box-shadow: none;
+}
+.sidebar-btn-active:hover {
+  background-color: var(--gold);
+  color: var(--white);
 }
 .sidebar-btn:focus,
 .sidebar-btn.focus {
@@ -106,7 +110,25 @@ a:hover {
   color: var(--white);
 }
 
-/* product-list */
+/* product-list items */
+.search-bar input,
+.search-bar button {
+  height: 2.5rem;
+  border: none;
+}
+.search-bar input:focus,
+.search-bar button:focus {
+  border: none;
+  box-shadow: none;
+}
+.search-bar input {
+  border-radius: 10px 0 0 10px;
+}
+.search-bar button {
+  border-radius: 0 10px 10px 0;
+  background-color: var(--darkgreen);
+  color: var(--white);
+}
 .add-items {
   height: 120px;
   width: 100%;
@@ -130,6 +152,14 @@ a:hover {
   margin-bottom: 2rem;
   height: 90%;
 }
+.author {
+  width: 80%;
+}
+.final_price {
+  width: 30%;
+  text-align: right;
+}
+
 .book-pic {
   background-color: var(--lightergrey);
   text-align: center;
@@ -164,6 +194,13 @@ a:hover {
   color: var(--gold);
   text-decoration: none;
 }
+.card-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 顯示行數 Chrome&Safari /
+  height: / 顯示高度 IE&Firefox */
+}
 .small {
   font-size: 12px;
   color: var(--gold);
@@ -188,6 +225,9 @@ a:hover {
   background-color: #96ace1;
   border-radius: 0.5rem;
 }
+/* .page-item.disabled .page-link {
+  background-color: transparent;
+} */
 /* .deleting {
   animation: delete 0.4s infinite;
 }
@@ -225,9 +265,12 @@ a:hover {
 .book-name {
   font-weight: bold;
 }
+.book-title {
+  width: 72%;
+}
 .product {
   position: relative;
-  transform: translateX(-32px);
+  margin-left: -15%;
 }
 .product-picture {
   width: 272px;
@@ -389,10 +432,6 @@ textarea {
 }
 
 /* footer */
-.footer {
-  padding: 4rem 0 7rem 0;
-  text-align: center;
-}
 .social-icons {
   margin: 2rem 0 0.5rem 0;
 }
