@@ -103,7 +103,7 @@ $discount_display = (strlen($row['discount']) == 3) ? $row['discount'] * 10 : $r
                             <div class="input-group-prepend">
                                 <span class="input-group-text">折扣</span>
                             </div>
-                            <input type="text" class="form-control" name="discount" value="<?= $discount_display ?>">
+                            <input type="text" class="form-control" name="discount" id="discount" value="<?= $discount_display ?>">
                             <div class="input-group-append">
                                 <span class="input-group-text">折</span>
                             </div>
@@ -297,6 +297,7 @@ $discount_display = (strlen($row['discount']) == 3) ? $row['discount'] * 10 : $r
                         message.innerHTML = obj.error || '<i class="fas fa-exclamation-triangle mr-2"></i>修改未成功';
                     }
                     message.style.display = "block";
+
                 })
         }
     }
