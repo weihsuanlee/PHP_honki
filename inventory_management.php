@@ -94,7 +94,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 4%;">編號</th>
+                                <th scope="col" style="width: 5%;">編號</th>
                                 <th scope="col">圖片</th>
                                 <th scope="col" style="width: 25%;">書名</th>
                                 <th scope="col">類別</th>

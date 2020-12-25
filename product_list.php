@@ -73,7 +73,6 @@ $categories = $pdo->query($c_sql)->fetchAll();
         </div>
         <div class="col-9 mr-auto">
             <div class="row justify-content-end">
-
                 <form class="form-inline mb-3 mr-4 search-bar">
                     <input class="form-control" type="search" name="search" value="<?= htmlentities($search) ?>">
                     <button class="btn" type="submit"><i class="fas fa-search mx-2"></i></button>
