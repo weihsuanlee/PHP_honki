@@ -34,7 +34,7 @@ if ($page < 1) $page = 1;
 $rows = [];
 //如果有資料
 if (!$totalRows == 0) {
-    $sql = sprintf("SELECT * FROM products %s LIMIT %s, %s", $where, ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM products %s ORDER BY `sid` DESC LIMIT %s, %s ", $where, ($page - 1) * $perPage, $perPage);
     $stmt = $pdo->query($sql);
     $rows = $stmt->fetchAll();
 }
@@ -54,7 +54,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
             <!-- 分類選單 -->
             <div class="btn-group-vertical w-100 mr-auto mb-5">
                 <a type="button" href="?" class="btn btn-dark">所有商品</a>
-                <?php if (!empty($params['search']) || !empty($params['pub_year'])) { ?>
+                <?php if (!empty($params['search'])) { ?>
                     <?php foreach ($categories as $c) : ?>
                         <a type="button" href="?<?php $params['category_sid'] = $c['sid'];
                                                 echo http_build_query($params); ?>" class="btn sidebar-btn <?= $category_sid == $c['sid'] ? 'sidebar-btn-active' : '' ?>">

@@ -29,6 +29,9 @@ if (!isset($pageName)) $pageName = '';
             <li>
                 <a class="nav-page" href="<?= WEB_ROOT ?>add_product.php">新增商品</a>
             </li>
+            <li>
+                <a class="nav-page" href="<?= WEB_ROOT ?>inventory_management.php">庫存管理</a>
+            </li>
         </ul>
     </div>
 
