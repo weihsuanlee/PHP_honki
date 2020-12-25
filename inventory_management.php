@@ -105,6 +105,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
                                 <th scope="col">實際售價</th>
                                 <th scope="col">ISBN</th>
                                 <th scope="col">庫存數量</th>
+                                <th scope="col">變更</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,6 +122,37 @@ $categories = $pdo->query($c_sql)->fetchAll();
                                     <td><?= $r['final_price'] ?></td>
                                     <td><?= $r['ISBN'] ?></td>
                                     <td><?= $r['stock_num'] ?></td>
+                                    <td>
+                                        <a href="edit_product.php?sid=<?= $r['sid'] ?>" class="edit-icon">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a class="delete-icon" data-toggle="modal" data-target="#delete-confirm<?= $r['sid']; ?>" href="javascript: delete_item(<?= $r['sid'] ?>)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                        <div class="modal fade" id="delete-confirm<?= $r['sid']; ?>" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-exclamation-circle"></i> 確認刪除</h5>
+                                                        <p id="text"></p>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <h5>是否刪除選取的商品？</h5>
+                                                        <img class="my-4" style="width: 7rem;" src="<?= WEB_ROOT ?>uploads/<?= $r['book_pics'] ?>" alt="">
+                                                        <p>"<?= $r['title'] ?>"</p>
+                                                        <p class="small">*商品被刪除後無法回復</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                                        <a href="javascript: delete_item(<?= $r['sid'] ?>);" class="btn btn-primary">確認刪除</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
