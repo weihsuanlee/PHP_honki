@@ -53,7 +53,7 @@ $sql = "UPDATE `products` SET
 `book_overview`=?,
 `list`=?,
 `stock_num`=?,
-`remark`=?
+`readtrial`=?
 WHERE `sid`=?";
 
 $stmt = $pdo->prepare($sql);
@@ -75,7 +75,7 @@ $stmt->execute([
     $_POST['book_overview'],
     $_POST['list'],
     $_POST['stock_num'],
-    $_POST['remark'],
+    $_POST['readtrial'],
     $_POST['sid'],
 ]);
 

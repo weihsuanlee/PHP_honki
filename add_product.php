@@ -148,7 +148,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
                             <div class="input-group-prepend">
                                 <span class="input-group-text">其他備註</span>
                             </div>
-                            <textarea class="form-control" id="remark" rows="3" name="remark"></textarea>
+                            <textarea class="form-control" id="readtrial" rows="3" name="readtrial"></textarea>
                         </div>
                     </div>
                 </div>

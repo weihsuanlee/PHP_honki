@@ -33,7 +33,7 @@ if (!empty($_FILES) and !empty($_FILES['book_pics']['type']) and $ext_map[$_FILE
 $discount_db = strlen($_POST['discount']) == 1 ? $_POST['discount'] / 10 : $_POST['discount'] / 100;
 
 
-$sql = "INSERT INTO `products` ( `book_pics`, `title`, `title_eng`, `author`, `publication`, `pub_year`, `ISBN`, `price`, `discount`, `final_price`, `category_sid`, `language`, `author_intro`, `book_overview`, `list`, `stock_num`, `remark`,`created_at`) 
+$sql = "INSERT INTO `products` ( `book_pics`, `title`, `title_eng`, `author`, `publication`, `pub_year`, `ISBN`, `price`, `discount`, `final_price`, `category_sid`, `language`, `author_intro`, `book_overview`, `list`, `stock_num`, `readtrial`,`created_at`) 
 VALUES (
     ?, ?, ?, ?, ?, ?, ?, ?, ?,
     ?, ?, ?, ?, ?, ?, ?, ?, NOW()
@@ -58,7 +58,7 @@ $stmt->execute([
     $_POST['book_overview'],
     $_POST['list'],
     $_POST['stock_num'],
-    $_POST['remark'],
+    $_POST['readtrial'],
 ]);
 
 $output['rowCount'] = $stmt->rowCount();

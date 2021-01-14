@@ -162,9 +162,9 @@ $discount_display = (strlen($row['discount']) == 3) ? $row['discount'] * 10 : $r
                     <div class="col-11">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">其他備註</span>
+                                <span class="input-group-text">試閱</span>
                             </div>
-                            <textarea class="form-control" id="remark" rows="3" name="remark"><?= $row['remark'] ?></textarea>
+                            <textarea class="form-control" id="readtrial" rows="3" name="readtrial"><?= $row['readtrial'] ?></textarea>
                         </div>
                     </div>
                 </div>
