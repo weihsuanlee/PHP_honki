@@ -29,7 +29,7 @@ if (!empty($pub_year)) {
 }
 
 
-$t_sql = "SELECT COUNT(*) FROM products $where ";
+$t_sql = "SELECT COUNT(*) FROM book_product $where ";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 
 $totalPages = ceil($totalRows / $perPage);
@@ -40,14 +40,14 @@ if ($page < 1) $page = 1;
 $rows = [];
 //如果有資料
 if (!$totalRows == 0) {
-    $sql = sprintf("SELECT * FROM products %s LIMIT %s, %s", $where, ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM book_product %s LIMIT %s, %s", $where, ($page - 1) * $perPage, $perPage);
     $stmt = $pdo->query($sql);
     $rows = $stmt->fetchAll();
 }
 
 
 //分類資料(for sidebar)
-$c_sql = "SELECT * FROM categories ";
+$c_sql = "SELECT * FROM book_categories ";
 $categories = $pdo->query($c_sql)->fetchAll();
 
 ?>

@@ -5,7 +5,7 @@ $pageName = 'add_product';
 $title = '新增商品';
 
 
-$c_sql = "SELECT * FROM categories ";
+$c_sql = "SELECT * FROM book_categories ";
 $categories = $pdo->query($c_sql)->fetchAll();
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
@@ -53,7 +53,7 @@ $categories = $pdo->query($c_sql)->fetchAll();
                             <select name="category_sid" class="custom-select" id="category_sid">
                                 <option>請選擇...</option>
                                 <?php foreach ($categories as $c) : ?>
-                                    <option value="<?= $c['sid'] ?>"><?= $c['name'] ?></option>
+                                    <option value="<?= $c['category_sid'] ?>"><?= $c['name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

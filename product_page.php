@@ -7,7 +7,7 @@ if (!isset($_GET['sid'])) {
     exit;
 }
 $sid = intval($_GET['sid']);
-$row = $pdo->query(" SELECT * FROM `products` WHERE sid = $sid ")
+$row = $pdo->query(" SELECT * FROM `book_product` WHERE sid = $sid ")
     ->fetch();
 if (empty($row)) {
     header('Location: product_list.php');

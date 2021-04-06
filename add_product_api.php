@@ -33,10 +33,10 @@ if (!empty($_FILES) and !empty($_FILES['book_pics']['type']) and $ext_map[$_FILE
 $discount_db = strlen($_POST['discount']) == 1 ? $_POST['discount'] / 10 : $_POST['discount'] / 100;
 
 
-$sql = "INSERT INTO `products` ( `book_pics`, `title`, `title_eng`, `author`, `publication`, `pub_year`, `ISBN`, `price`, `discount`, `final_price`, `category_sid`, `language`, `author_intro`, `book_overview`, `list`, `stock_num`, `readtrial`,`created_at`) 
+$sql = "INSERT INTO `book_product` ( `book_pics`, `title`, `title_eng`, `author`, `publication`, `pub_year`, `ISBN`, `price`, `discount`, `final_price`, `category_sid`, `language`, `author_intro`, `book_overview`, `list`, `stock_num`, `readtrial`,`created_at`,`item_sid`) 
 VALUES (
     ?, ?, ?, ?, ?, ?, ?, ?, ?,
-    ?, ?, ?, ?, ?, ?, ?, ?, NOW()
+    ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 1
 )";
 
 $stmt = $pdo->prepare($sql);

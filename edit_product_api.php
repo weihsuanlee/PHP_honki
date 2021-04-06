@@ -23,7 +23,7 @@ $ext_map = [
 ];
 
 $sid = intval($_POST['sid']);
-$row = $pdo->query("SELECT * FROM `products` p JOIN `categories` c ON p.`category_sid`= c.`sid` WHERE p.sid= $sid ")
+$row = $pdo->query("SELECT * FROM `book_product` p JOIN `book_categories` c ON p.`category_sid`= c.`category_sid` WHERE p.sid= $sid ")
     ->fetch();
 
 
@@ -36,7 +36,7 @@ if (!empty($_FILES) and !empty($_FILES['book_pics']['type']) and $ext_map[$_FILE
 
 $discount_db = strlen($_POST['discount']) == 1 ? $_POST['discount'] / 10 : $_POST['discount'] / 100;
 
-$sql = "UPDATE `products` SET
+$sql = "UPDATE `book_product` SET
 `book_pics`=?, 
 `title`=?,
 `title_eng`=?,

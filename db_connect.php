@@ -1,6 +1,6 @@
 <?php
 $db_host = 'localhost';
-$db_name = 'honki_books';
+$db_name = 'honki';
 $db_user = 'root';
 $db_pass = '';
 

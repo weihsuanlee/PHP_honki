@@ -23,7 +23,7 @@ if (!empty($search)) {
 }
 
 
-$t_sql = "SELECT COUNT(*) FROM products $where ";
+$t_sql = "SELECT COUNT(*) FROM book_product $where ";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 
 $totalPages = ceil($totalRows / $perPage);
@@ -34,14 +34,14 @@ if ($page < 1) $page = 1;
 $rows = [];
 //如果有資料
 if (!$totalRows == 0) {
-    $sql = sprintf("SELECT * FROM products %s ORDER BY `sid` DESC LIMIT %s, %s ", $where, ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM book_product %s ORDER BY `sid` DESC LIMIT %s, %s ", $where, ($page - 1) * $perPage, $perPage);
     $stmt = $pdo->query($sql);
     $rows = $stmt->fetchAll();
 }
 
 
 //分類資料(for sidebar)
-$c_sql = "SELECT * FROM categories ";
+$c_sql = "SELECT * FROM book_categories ";
 $categories = $pdo->query($c_sql)->fetchAll();
 
 ?>
@@ -56,15 +56,15 @@ $categories = $pdo->query($c_sql)->fetchAll();
                 <a type="button" href="?" class="btn btn-dark">所有商品</a>
                 <?php if (!empty($params['search'])) { ?>
                     <?php foreach ($categories as $c) : ?>
-                        <a type="button" href="?<?php $params['category_sid'] = $c['sid'];
-                                                echo http_build_query($params); ?>" class="btn sidebar-btn <?= $category_sid == $c['sid'] ? 'sidebar-btn-active' : '' ?>">
+                        <a type="button" href="?<?php $params['category_sid'] = $c['category_sid'];
+                                                echo http_build_query($params); ?>" class="btn sidebar-btn <?= $category_sid == $c['category_sid'] ? 'sidebar-btn-active' : '' ?>">
                             <?= $c['name'] ?>
                         </a>
                     <?php endforeach;
                     unset($params['category_sid']); ?>
                     <?php } else {
                     foreach ($categories as $c) : ?>
-                        <a type="button" href="?category_sid=<?= $c['sid'] ?>" class="btn sidebar-btn <?= $category_sid == $c['sid'] ? 'sidebar-btn-active' : '' ?>">
+                        <a type="button" href="?category_sid=<?= $c['category_sid'] ?>" class="btn sidebar-btn <?= $category_sid == $c['category_sid'] ? 'sidebar-btn-active' : '' ?>">
                             <?= $c['name'] ?>
                         </a>
                     <?php endforeach; ?>

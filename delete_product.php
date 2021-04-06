@@ -4,7 +4,7 @@ require __DIR__ . '/db_connect.php';
 
 if (isset($_GET['sid'])) {
     $sid = intval($_GET['sid']);
-    $pdo->query("DELETE FROM `products` WHERE sid = $sid ");
+    $pdo->query("DELETE FROM `book_product` WHERE sid = $sid ");
 }
 
 $backTo = 'product_list.php';

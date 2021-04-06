@@ -8,13 +8,13 @@ if (!isset($_GET['sid'])) {
 }
 
 $sid = intval($_GET['sid']);
-$row = $pdo->query("SELECT * FROM `products` p JOIN `categories` c ON p.`category_sid`= c.`sid` WHERE p.sid= $sid ")
+$row = $pdo->query("SELECT * FROM `book_product` p JOIN `book_categories` c ON p.`category_sid`= c.`category_sid` WHERE p.sid= $sid ")
     ->fetch();
 if (empty($row)) {
     header('Location: product_list.php');
     exit;
 }
-$c_sql = "SELECT * FROM categories ";
+$c_sql = "SELECT * FROM book_categories ";
 $categories = $pdo->query($c_sql)->fetchAll();
 
 $pageName = 'edit_product';
@@ -69,7 +69,7 @@ $discount_display = (strlen($row['discount']) == 3) ? $row['discount'] * 10 : $r
                             <select name="category_sid" class="custom-select" id="category_sid">
                                 <option value="<?= $row['category_sid'] ?>"><?= $row['name'] ?>(已選擇)</option>
                                 <?php foreach ($categories as $c) : ?>
-                                    <option value="<?= $c['sid'] ?>"><?= $c['name'] ?></option>
+                                    <option value="<?= $c['category_sid'] ?>"><?= $c['name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
