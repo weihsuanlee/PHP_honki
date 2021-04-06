@@ -34,7 +34,7 @@ if ($page < 1) $page = 1;
 $rows = [];
 //如果有資料
 if (!$totalRows == 0) {
-    $sql = sprintf("SELECT p.*, c.name FROM book_product p JOIN book_categories c ON p.category_sid = c.sid %s LIMIT %s, %s ", $where, ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT p.*, c.name FROM `book_product` p JOIN `book_categories` c ON p.category_sid = c.category_sid %s LIMIT %s, %s ", $where, ($page - 1) * $perPage, $perPage);
     $stmt = $pdo->query($sql);
     $rows = $stmt->fetchAll();
 }
