@@ -155,14 +155,16 @@ $categories = $pdo->query($c_sql)->fetchAll();
                                         <i class="fas fa-long-arrow-alt-left"></i>
                                     </a>
                                 </li>
-                                <?php for ($i = 1; $i <= $totalPages; $i++) :
+                                <?php for ($i = $page-3; $i <= $page+3; $i++) :
+                                    if($i>=1 and $i<=$totalPages):
                                     $params['page'] = $i;
                                 ?>
                                     <li class="page-item <?= $i === $page ? 'active' : '' ?>">
                                         <a href="?<?php $params['page'] = $i;
                                                     echo  http_build_query($params) ?>" class="page-link"><?= $i ?></a>
                                     </li>
-                                <?php endfor; ?>
+                                <?php endif;
+                                endfor; ?>
                                 <li class="page-item <?= $page == $totalPages ? 'd-none' : '' ?>">
                                     <a class="page-link" href="?<?php $params['page'] = $page + 1;
                                                                 echo http_build_query($params); ?>">
